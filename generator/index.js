@@ -5,13 +5,11 @@ const rimraf = require('./../tools/rimraf')
 
 rimraf(path.join(base, '/src'))
 
-replaceFiles.forEach((file) => {
-  fs.rename(
-    path.join(__dirname, 'template/' + 'default.eslintrc.js'), 
-    path.join(base, '/' + '.eslintrc.js'), 
-    function (err) { if (err) throw err },
-  )
-})
+fs.rename(
+  path.join(__dirname, 'template/' + 'default.eslintrc.js'), 
+  path.join(base, '/' + '.eslintrc.js'), 
+  function (err) { if (err) throw err },
+)
 
 module.exports = (api, opts) => {
   api.extendPackage({
