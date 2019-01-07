@@ -1,19 +1,19 @@
-base = process.env.PWD
+const base = process.cwd()
 const path = require('path')
 const fs = require('fs')
 const rimraf = require('./../tools/rimraf')
 
-rimraf(path.join(base, '/src'))
+rimraf(path.join(base, 'src'))
 
 fs.rename(
-  path.join(__dirname, 'template/' + 'default.eslintrc.js'), 
-  path.join(base, '/' + '.eslintrc.js'), 
+  path.join(__dirname, 'template', 'default.eslintrc.js'), 
+  path.join(base, '.eslintrc.js'), 
   function (err) { if (err) throw err },
 )
 
 fs.rename(
-  path.join(__dirname, 'template/' + 'default.gitignore'), 
-  path.join(base, '/' + '.gitignore'), 
+  path.join(__dirname, 'template', 'default.gitignore'), 
+  path.join(base, '.gitignore'), 
   function (err) { if (err) throw err },
 )
 
