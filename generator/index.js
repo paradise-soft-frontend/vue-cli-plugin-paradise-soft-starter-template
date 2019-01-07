@@ -2,14 +2,13 @@ base = process.env.PWD
 const path = require('path')
 const fs = require('fs')
 const rimraf = require('./../tools/rimraf')
-const replaceFiles = ['.eslintrc.js', '.gitignore']
 
 rimraf(path.join(base, '/src'))
 
 replaceFiles.forEach((file) => {
   fs.rename(
-    path.join(__dirname, 'template/' + file), 
-    path.join(base, '/' + file), 
+    path.join(__dirname, 'template/' + 'default.eslintrc.js'), 
+    path.join(base, '/' + '.eslintrc.js'), 
     function (err) { if (err) throw err },
   )
 })
