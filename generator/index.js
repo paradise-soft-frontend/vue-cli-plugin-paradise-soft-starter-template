@@ -11,6 +11,12 @@ fs.rename(
   function (err) { if (err) throw err },
 )
 
+fs.rename(
+  path.join(__dirname, 'template/' + 'default.gitignore'), 
+  path.join(base, '/' + '.gitignore'), 
+  function (err) { if (err) throw err },
+)
+
 module.exports = (api, opts) => {
   api.extendPackage({
     scripts: {
