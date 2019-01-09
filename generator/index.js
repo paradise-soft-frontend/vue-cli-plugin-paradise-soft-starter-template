@@ -2,22 +2,14 @@ const base = process.cwd()
 const path = require('path')
 const fs = require('fs')
 const rimraf = require('./../tools/rimraf')
-
-rimraf(path.join(base, 'src'))
-
-fs.rename(
-  path.join(__dirname, 'template', 'default.eslintrc.js'), 
-  path.join(base, '.eslintrc.js'), 
-  function (err) { if (err) throw err },
-)
-
-fs.rename(
-  path.join(__dirname, 'template', 'default.gitignore'), 
-  path.join(base, '.gitignore'), 
-  function (err) { if (err) throw err },
-)
+const updateEslintrc = require('./updateFiles/default/eslintrc')
+const updateGitignore = require('./updateFiles/default/gitignore')
+const updateMain = require('./updateFiles/vuex-api-request/main')
+const updateStore = require('./updateFiles/vuex-api-request/store')
 
 module.exports = (api, opts) => {
+  rimraf(path.join(base, 'src'))
+
   api.extendPackage({
     scripts: {
       'json-server': 'json-server --watch db.json --port 3002'
@@ -32,5 +24,25 @@ module.exports = (api, opts) => {
     },
   })
 
-  api.render('./template')
+  api.render('./templates/default')
+
+  if (opts.vuexApiRequest) {
+    api.extendPackage({
+      dependencies: {
+        'vuex-api-request': '^1.0.0',
+      },
+    })
+
+    api.render('./templates/vuex-api-request')
+  }
+
+  api.postProcessFiles(files => {
+    updateEslintrc(api, opts, files)
+    updateGitignore(api, opts, files)
+
+    if (opts.vuexApiRequest) {
+      updateMain(api, opts, files)
+      updateStore(api, opts, files)
+    }
+  })
 }
