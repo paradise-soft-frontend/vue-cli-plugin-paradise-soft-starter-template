@@ -7,9 +7,9 @@ const updateGitignore = require('./updateFiles/default/gitignore')
 const updateMain = require('./updateFiles/vuex-api-request/main')
 const updateStore = require('./updateFiles/vuex-api-request/store')
 
-module.exports = (api, opts) => {
-  rimraf(path.join(base, 'src'))
+rimraf(path.join(base, 'src'))
 
+module.exports = (api, opts) => {
   api.extendPackage({
     scripts: {
       'json-server': 'json-server --watch db.json --port 3002'
@@ -29,7 +29,7 @@ module.exports = (api, opts) => {
   if (opts.vuexApiRequest) {
     api.extendPackage({
       dependencies: {
-        'vuex-api-request': '^0.3.0',
+        'vuex-api-request': '^1.2.0',
       },
     })
 
