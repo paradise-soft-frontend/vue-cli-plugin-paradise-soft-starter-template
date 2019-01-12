@@ -22,4 +22,13 @@ export default [
       layout: 'Full',
     },
   },
+  {
+    path: '*',
+    name: 'not-found',
+    component: () => import(/* webpackChunkName: "about" */ '@/pages/NotFound'),
+    meta: {
+      isPublic: true,
+      layout: 'Error',
+    },
+  },
 ]
