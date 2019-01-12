@@ -1,19 +1,16 @@
-import VuexApiRequest, {createWatch, vuexApiModule, AuthLocalStoragePlugin} from 'vuex-api-request'
+import VuexApiRequest from 'vuex-api-request'
 
 const vuexApiModuleName = 'api'
 
-const watch = createWatch({
-  vuexApiModuleName,
+const watch = VuexApiRequest.createWatch({
+  vuexApiModuleName: 'api',
   response: (res) => res,
   error: (err) => err,
+  errorHandler: (context, err) => {
+    if (err.status === 401) context.dispatch('auth/logout')
+  },
 })
 
-const authLocalStoragePlugin = AuthLocalStoragePlugin({
-  storageKey: 'paradise-soft',
-  authModule: require('@/store/modules/auth').default,
-  removeLocalStorageMutationType: 'clear',
-})
-
-export {watch, vuexApiModuleName, vuexApiModule, authLocalStoragePlugin}
+export {watch, vuexApiModuleName}
 
 export default VuexApiRequest

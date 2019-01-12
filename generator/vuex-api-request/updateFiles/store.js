@@ -5,13 +5,14 @@ module.exports = (api, opts, files) => {
   if (store) {
     const lines = store.split(/\r?\n/g).reverse()
     const lastImportIndex = lines.findIndex(line => line.match(/^import/))
-    lines[lastImportIndex] += `\nimport VuexApiRequest, {vuexApiModule, vuexApiModuleName, authLocalStoragePlugin} from '@/vendor/vuex-api-request'`
+    lines[lastImportIndex] += `\nimport VuexApiRequest, {vuexApiModuleName} from '@/vendor/vuex-api-request'`
+    lines[lastImportIndex] += `\nimport authLocalStoragePlugin from '@/vendor/vuex-api-request/authLocalStoragePlugin'`
 
     const useVueIndex = lines.findIndex(line => line.match(/^Vue\.use/))
-    lines[useVueIndex] += `\nVue.use(VuexApiRequest({vuexApiModuleName}))`
+    lines[useVueIndex] += `\nVue.use(VuexApiRequest({vuexModuleName: vuexApiModuleName}))`
 
     const vuexModuleIndex = lines.findIndex(line => line.match(/\.\.\.modules/))
-    lines[vuexModuleIndex] += `\n    [vuexApiModuleName]: vuexApiModule,`
+    lines[vuexModuleIndex] += `\n    [vuexApiModuleName]: VuexApiRequest.module,`
 
     const lastIndex = lines.findIndex(line => line.match(/\}\)/))
     lines[lastIndex+1] += `\n  plugins: [authLocalStoragePlugin],`
