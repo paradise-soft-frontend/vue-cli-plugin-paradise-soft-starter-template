@@ -2,10 +2,13 @@ const base = process.cwd()
 const path = require('path')
 const fs = require('fs')
 const rimraf = require('./../tools/rimraf')
-const updateEslintrc = require('./updateFiles/default/eslintrc')
-const updateGitignore = require('./updateFiles/default/gitignore')
-const updateMain = require('./updateFiles/vuex-api-request/main')
-const updateStore = require('./updateFiles/vuex-api-request/store')
+const default_UpdateEslintrc = require('./default/updateFiles/eslintrc')
+const default_UpdateGitignore = require('./default/updateFiles/gitignore')
+const vuexApiRequest_UpdateMain = require('./vuex-api-request/updateFiles/main')
+const vuexApiRequest_UpdateStore = require('./vuex-api-request/updateFiles/store')
+const devServerProxy_Utils_Request = require('./dev-server-proxy/updateFiles/utils-request')
+const devServerProxy_Vendor_VuexApiRequest_Request = require('./dev-server-proxy/updateFiles/vendor-vuex-api-request-request')
+const devServerProxy_Api_Post = require('./dev-server-proxy/updateFiles/api-post')
 
 rimraf(path.join(base, 'src'))
 
@@ -24,7 +27,7 @@ module.exports = (api, opts) => {
     },
   })
 
-  api.render('./templates/default')
+  api.render('./default/template')
 
   if (opts.vuexApiRequest) {
     api.extendPackage({
@@ -33,16 +36,29 @@ module.exports = (api, opts) => {
       },
     })
 
-    api.render('./templates/vuex-api-request')
+    api.render('./vuex-api-request/template')
+  }
+
+  if (opts.proxy) {
+    api.render('./dev-server-proxy/template')
   }
 
   api.postProcessFiles(files => {
-    updateEslintrc(api, opts, files)
-    updateGitignore(api, opts, files)
+    default_UpdateEslintrc(api, opts, files)
+    default_UpdateGitignore(api, opts, files)
 
     if (opts.vuexApiRequest) {
-      updateMain(api, opts, files)
-      updateStore(api, opts, files)
+      vuexApiRequest_UpdateMain(api, opts, files)
+      vuexApiRequest_UpdateStore(api, opts, files)
     }
+
+    if (opts.proxy) {
+      devServerProxy_Utils_Request(api, opts, files)
+    }
+
+    if (opts.vuexApiRequest && opts.proxy) {
+      devServerProxy_Vendor_VuexApiRequest_Request(api, opts, files)
+      devServerProxy_Api_Post(api, opts, files)
+    } 
   })
 }
