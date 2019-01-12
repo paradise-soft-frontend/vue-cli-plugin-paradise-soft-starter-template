@@ -1,8 +1,4 @@
-import VuexApiRequest, {
-  createWatch, 
-  vuexApiModule,
-  AuthLocalStoragePlugin,
-} from 'vuex-api-request'
+import VuexApiRequest, {createWatch, vuexApiModule, AuthLocalStoragePlugin} from 'vuex-api-request'
 
 const vuexApiModuleName = 'api'
 
@@ -18,11 +14,6 @@ const authLocalStoragePlugin = AuthLocalStoragePlugin({
   removeLocalStorageMutationType: 'clear',
 })
 
-export {
-  watch,
-  vuexApiModuleName,
-  vuexApiModule,
-  authLocalStoragePlugin,
-}
+export {watch, vuexApiModuleName, vuexApiModule, authLocalStoragePlugin}
 
 export default VuexApiRequest

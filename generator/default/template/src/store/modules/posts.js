@@ -21,7 +21,7 @@ const actions = {
   },
   async getPost(context, id) {
     const res = await fetchPost(id)
-    console.log(res.data)
+    return res
   },
   async createPost(context, data) {
     await createPost(data)

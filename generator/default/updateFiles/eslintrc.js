@@ -6,7 +6,7 @@ module.exports = (api, opts, files) => {
     const lines = store.split(/\r?\n/g).reverse()
     const rulesIndex = lines.findIndex(line => line.match(/rules/))
 
-    lines[rulesIndex] += `\n    "prettier/prettier": process.env.NODE_ENV === "production" ? "error" : "off",`
+    lines[rulesIndex] += `\n    "prettier/prettier": "off",`
     files[file] = lines.reverse().join('\n')
   }
 }

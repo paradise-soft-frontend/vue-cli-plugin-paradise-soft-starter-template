@@ -7,9 +7,11 @@ const axiosConfig = {
 }
 
 Vue.use(Http(axiosConfig))
-Vue.use(Auth({
-  axiosConfig,
-  store,
-  authBinding: (state) => state.auth.accessToken,
-  authCompleted: (store) => store,
-}))
+Vue.use(
+  Auth({
+    axiosConfig,
+    store,
+    authBinding: (state) => state.auth.accessToken,
+    authCompleted: (store) => store,
+  })
+)
