@@ -7,6 +7,6 @@ module.exports = [
   {
     type: 'confirm',
     name: 'proxy',
-    message: 'Use proxy in development mode ?'
+    message: 'Use http-proxy ?'
   },
 ]
