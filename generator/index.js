@@ -40,6 +40,13 @@ module.exports = (api, opts) => {
   }
 
   if (opts.proxy) {
+    api.extendPackage({
+      dependencies: {
+        'dotenv': '^6.2.0',
+        'http-proxy-middleware': '^0.19.1',
+      },
+    })
+
     api.render('./dev-server-proxy/template')
   }
 
