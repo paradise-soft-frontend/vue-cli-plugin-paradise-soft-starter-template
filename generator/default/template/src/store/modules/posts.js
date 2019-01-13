@@ -1,4 +1,4 @@
-import {fetchPosts, fetchPost, createPost} from '@/api/post'
+import {fetchPosts, fetchPost, createPost} from '@/api/posts'
 
 const INITIAL_STATE = {
   posts: [],

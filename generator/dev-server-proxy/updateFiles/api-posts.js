@@ -1,5 +1,5 @@
 module.exports = (api, opts, files) => {
-  const file = 'src/api/post.js'
+  const file = 'src/api/posts.js'
   const post = files[file]
   
   if (post) {

@@ -8,7 +8,7 @@ const vuexApiRequest_UpdateMain = require('./vuex-api-request/updateFiles/main')
 const vuexApiRequest_UpdateStore = require('./vuex-api-request/updateFiles/store')
 const devServerProxy_Utils_Request = require('./dev-server-proxy/updateFiles/utils-request')
 const devServerProxy_Vendor_VuexApiRequest_Request = require('./dev-server-proxy/updateFiles/vendor-vuex-api-request-request')
-const devServerProxy_Api_Post = require('./dev-server-proxy/updateFiles/api-post')
+const devServerProxy_Api_Posts = require('./dev-server-proxy/updateFiles/api-posts')
 
 rimraf(path.join(base, 'src'))
 
@@ -65,7 +65,7 @@ module.exports = (api, opts) => {
 
     if (opts.vuexApiRequest && opts.proxy) {
       devServerProxy_Vendor_VuexApiRequest_Request(api, opts, files)
-      devServerProxy_Api_Post(api, opts, files)
+      devServerProxy_Api_Posts(api, opts, files)
     } 
   })
 }
