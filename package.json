@@ -1,8 +1,12 @@
 {
   "name": "vue-cli-plugin-paradise-soft-starter-template",
-  "version": "2.1.0",
+  "version": "2.2.0",
   "description": "paradise-soft plugin for vue-cli",
   "main": "index.js",
   "author": "PS.F.",
-  "license": "MIT"
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Frontend-Paradise-Soft/vue-cli-plugin-paradise-soft-starter-template.git"
+  },
 }

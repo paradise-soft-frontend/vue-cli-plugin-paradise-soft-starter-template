@@ -1,7 +1,5 @@
 import VuexApiRequest from 'vuex-api-request'
 
-const vuexApiModuleName = 'api'
-
 const watch = VuexApiRequest.createWatch({
   vuexApiModuleName: 'api',
   response: (res) => res,
@@ -11,6 +9,6 @@ const watch = VuexApiRequest.createWatch({
   },
 })
 
-export {watch, vuexApiModuleName}
+export {watch}
 
 export default VuexApiRequest
