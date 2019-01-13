@@ -1,6 +1,6 @@
 <template>
   <div class="not-found">
-    <h1>This is an not found page</h1>
+    Not Found
   </div>
 </template>
 
@@ -9,3 +9,9 @@ export default {
   name: 'NotFound',
 }
 </script>
+
+<style>
+.not-found {
+  margin-top: 20px;
+} 
+</style>
