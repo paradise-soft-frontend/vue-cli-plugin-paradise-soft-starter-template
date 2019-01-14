@@ -32,7 +32,7 @@ module.exports = (api, opts) => {
   if (opts.vuexApiRequest) {
     api.extendPackage({
       dependencies: {
-        'vuex-api-request': '^2.3.0',
+        'vuex-api-request': '^2.4.0',
       },
     })
 
