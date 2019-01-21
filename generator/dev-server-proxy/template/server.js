@@ -1,8 +1,8 @@
-const express = require('express')
-const proxy = require('http-proxy-middleware')
-require('dotenv').config()
-const app = express()
-const port = process.env.PORT || 3000
+const express = require('express');
+const proxy = require('http-proxy-middleware');
+require('dotenv').config();
+const app = express();
+const port = process.env.PORT || 3000;
 
 app.use(
   '/api',
@@ -14,7 +14,7 @@ app.use(
       '^/api': '',
     },
   })
-)
-app.use(express.static('dist'))
-app.get('*', (req, res) => res.sendFile(__dirname + '/dist/index.html'))
-app.listen(port)
+);
+app.use(express.static('dist'));
+app.get('*', (req, res) => res.sendFile(__dirname + '/dist/index.html'));
+app.listen(port);

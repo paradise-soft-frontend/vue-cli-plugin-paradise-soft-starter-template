@@ -1,15 +1,15 @@
-import Vue from 'vue'
-import Router from 'vue-router'
-import store from '@/store'
-import routes from './routes'
+import Vue from 'vue';
+import Router from 'vue-router';
+import store from '@/store';
+import routes from './routes';
 
-Vue.use(Router)
+Vue.use(Router);
 
 async function guardRoute(to, from, next) {
   // eslint-disable-next-line
-  const auth = store.state.auth
-  if (!auth.isLoggedIn) return next({path: '/login'})
-  next()
+  const auth = store.state.auth;
+  if (!auth.isLoggedIn) return next({ path: '/login' });
+  return next();
 }
 
 const router = new Router({
@@ -20,10 +20,10 @@ const router = new Router({
       // document.title = route.title
 
       // Auth navigation guard.
-      if (route.meta && route.meta.isPublic === false) return guardRoute(to, from, next)
-      next()
+      if (route.meta && route.meta.isPublic === false) return guardRoute(to, from, next);
+      return next();
     },
   })),
-})
+});
 
-export default router
+export default router;

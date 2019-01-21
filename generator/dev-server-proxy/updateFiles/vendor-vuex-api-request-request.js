@@ -1,12 +1,12 @@
 module.exports = (api, opts, files) => {
-  const file = 'src/vendor/vuex-api-request/request.js'
-  const request = files[file]
-  
-  if (request) {
-    const lines = request.split(/\r?\n/g).reverse()
-    const axiosConfigIndex = lines.findIndex(line => line.match(/baseURL/))
+  const file = 'src/vendor/vuex-api-request/request.js';
+  const request = files[file];
 
-    lines[axiosConfigIndex] = `  baseURL: '/api',`
-    files[file] = lines.reverse().join('\n')
+  if (request) {
+    const lines = request.split(/\r?\n/g).reverse();
+    const axiosConfigIndex = lines.findIndex((line) => line.match(/baseURL/));
+
+    lines[axiosConfigIndex] = `  baseURL: '/api',`;
+    files[file] = lines.reverse().join('\n');
   }
-}
+};

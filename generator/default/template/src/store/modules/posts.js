@@ -1,39 +1,39 @@
-import {fetchPosts, fetchPost, createPost} from '@/api/posts'
+import { fetchPosts, fetchPost, createPost } from '@/api/posts';
 
 const INITIAL_STATE = {
   posts: [],
-}
+};
 
 const mutations = {
   SET_POSTS(state, posts) {
-    state.posts = posts
+    state.posts = posts;
   },
   // eslint-disable-next-line
   CLEAR(state) {
-    state = Object.assign(state, JSON.parse(JSON.stringify(INITIAL_STATE)))
+    state = Object.assign(state, JSON.parse(JSON.stringify(INITIAL_STATE)));
   },
-}
+};
 
 const actions = {
-  async getPosts({commit}) {
-    const res = await fetchPosts()
-    commit('SET_POSTS', res.data)
+  async getPosts({ commit }) {
+    const res = await fetchPosts();
+    commit('SET_POSTS', res.data);
   },
   async getPost(context, id) {
-    const res = await fetchPost(id)
-    return res
+    const res = await fetchPost(id);
+    return res;
   },
   async createPost(context, data) {
-    await createPost(data)
+    await createPost(data);
   },
-  clear({commit}) {
-    commit('CLEAR')
+  clear({ commit }) {
+    commit('CLEAR');
   },
-}
+};
 
 const getters = {
   posts: (state) => state.posts,
-}
+};
 
 export default {
   namespaced: true,
@@ -41,4 +41,4 @@ export default {
   mutations,
   actions,
   getters,
-}
+};

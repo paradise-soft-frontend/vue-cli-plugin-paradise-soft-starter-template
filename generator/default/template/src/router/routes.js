@@ -1,4 +1,6 @@
-import Home from './../pages/Home'
+import Home from '../pages/Home';
+import About from '../pages/About';
+import NotFound from '../pages/NotFound';
 
 export default [
   {
@@ -13,10 +15,7 @@ export default [
   {
     path: '/about',
     name: 'about',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ './../pages/About'),
+    component: About,
     meta: {
       isPublic: true,
       layout: 'Full',
@@ -25,10 +24,10 @@ export default [
   {
     path: '*',
     name: 'not-found',
-    component: () => import(/* webpackChunkName: "about" */ '@/pages/NotFound'),
+    component: NotFound,
     meta: {
       isPublic: true,
       layout: 'Error',
     },
   },
-]
+];

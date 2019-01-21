@@ -1,16 +1,16 @@
-import Vue from 'vue'
-import store from '@/store'
-import {Http, Auth} from 'vuex-api-request'
+import Vue from 'vue';
+import store from '@/store';
+import { Http, Auth } from 'vuex-api-request';
 
 const axiosConfig = {
   baseURL: process.env.VUE_APP_API_URL,
-}
+};
 
-Vue.use(Http(axiosConfig))
+Vue.use(Http(axiosConfig));
 Vue.use(
   Auth({
     headerBinding: {
-      Authorization: [store, (state) => state.auth.accessToken]
+      Authorization: [store, (state) => state.auth.accessToken],
     },
   })
-)
+);

@@ -21,7 +21,8 @@
   </div>
 </template>
 <script>
-import {mapGetters, mapActions} from 'vuex'
+import { mapGetters, mapActions } from 'vuex';
+
 export default {
   name: 'HelloWorld',
   props: {
@@ -35,16 +36,16 @@ export default {
       clearPosts: 'clear',
     }),
     async createData() {
-      await this.createPost({title: 'hi', author: 'yiwei'})
-      this.getPosts()
+      await this.createPost({ title: 'hi', author: 'yiwei' });
+      this.getPosts();
     },
   },
   computed: mapGetters('posts', ['posts']),
   created() {
-    this.getPosts()
+    this.getPosts();
     // this.getPost(1)
   },
-}
+};
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->

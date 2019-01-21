@@ -7,11 +7,11 @@
 <script>
 export default {
   name: 'NotFound',
-}
+};
 </script>
 
 <style>
 .not-found {
   margin-top: 20px;
-} 
+}
 </style>
