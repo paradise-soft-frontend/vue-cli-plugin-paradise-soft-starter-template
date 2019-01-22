@@ -8,7 +8,7 @@ const axiosConfig = {
 
 Vue.use(Http(axiosConfig));
 Vue.use(
-  Auth({
+  Auth(axiosConfig, {
     headerBinding: {
       Authorization: [store, (state) => state.auth.accessToken],
     },
