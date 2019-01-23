@@ -1,5 +1,5 @@
 import Home from '../pages/Home';
-import About from '../pages/About';
+import Login from '../pages/Login';
 import NotFound from '../pages/NotFound';
 
 export default [
@@ -13,9 +13,9 @@ export default [
     },
   },
   {
-    path: '/about',
-    name: 'about',
-    component: About,
+    path: '/login',
+    name: 'login',
+    component: Login,
     meta: {
       isPublic: true,
       layout: 'Full',
