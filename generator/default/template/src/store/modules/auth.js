@@ -1,5 +1,6 @@
 import Vue from 'vue';
 import router from '@/router';
+import { userLogin } from '@/api/auth';
 
 const INITIAL_STATE = {
   isLoggedIn: false,
@@ -28,24 +29,16 @@ export default {
     },
 
     login(context, { creds, redirect }) {
-      return Vue.http
-        .post(
-          '/login',
-          JSON.stringify({
-            grant_type: 'password',
-            ...creds,
-          })
-        )
-        .then((res) => {
-          const auth = {
-            isLoggedIn: true,
-            accessToken: res.data.access_token,
-          };
+      return userLogin(creds).then((res) => {
+        const auth = {
+          isLoggedIn: true,
+          accessToken: res.data.access_token,
+        };
 
-          context.dispatch('auth/update', auth);
-          if (redirect) router.push({ name: redirect });
-          return res;
-        });
+        context.dispatch('auth/update', auth);
+        if (redirect) router.push({ name: redirect });
+        return res;
+      });
     },
 
     logout(context) {

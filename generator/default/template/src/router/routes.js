@@ -8,7 +8,7 @@ export default [
     name: 'home',
     component: Home,
     meta: {
-      isPublic: true,
+      isPublic: false,
       layout: 'Default',
     },
   },
