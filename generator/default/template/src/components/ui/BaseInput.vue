@@ -1,8 +1,7 @@
 <template>
   <input class="base-input"
-         type="text"
          v-bind="$attrs"
-         @input="handleInput">
+         v-on="listeners">
 </template>
 
 <script>
@@ -11,9 +10,12 @@ export default {
 
   inheritAttrs: false,
 
-  methods: {
-    handleInput(event) {
-      this.$emit('input', event.target.value);
+  computed: {
+    listeners() {
+      return {
+        ...this.$listeners,
+        input: (event) => this.$emit('input', event.target.value),
+      };
     },
   },
 };

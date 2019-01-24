@@ -28,7 +28,7 @@ export default {
       commit('CLEAR');
     },
 
-    async login(context, { creds, redirect }) {
+    login(context, creds) {
       if (process.env.NODE_ENV === 'debug') {
         const auth = {
           isLoggedIn: true,
@@ -36,25 +36,27 @@ export default {
         };
 
         context.dispatch('update', auth);
-        if (redirect) router.push(redirect);
+        router.push('/');
         return 'User Is LoggedIn';
       }
 
-      return watch(context, 'login')(userLogin(creds)).then((res) => {
+      const request = watch(context, 'login')(userLogin(creds));
+
+      return request.then((res) => {
         const auth = {
           isLoggedIn: true,
           accessToken: res.data.access_token,
         };
 
         context.dispatch('update', auth);
-        if (redirect) router.push(redirect);
+        router.push('/');
         return res;
       });
     },
 
     logout(context) {
-      context.dispatch('clear');
-      router.push({ name: 'login' });
+      context.dispatch('clear', { root: true });
+      router.push('/login');
     },
   },
 };

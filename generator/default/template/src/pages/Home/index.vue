@@ -1,6 +1,7 @@
 <template>
   <div class="home">
     <HelloWorld msg="Welcome to Your Vue.js App" />
+    <BaseButton @click="userLogout">Logout</BaseButton>
   </div>
 </template>
 
@@ -9,8 +10,15 @@ import HelloWorld from './HelloWorld.vue';
 
 export default {
   name: 'Home',
+
   components: {
     HelloWorld,
+  },
+
+  methods: {
+    userLogout() {
+      this.$store.dispatch('auth/logout');
+    },
   },
 };
 </script>
