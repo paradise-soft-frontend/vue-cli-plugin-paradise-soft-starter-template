@@ -1,5 +1,6 @@
 import router from '@/router';
 import { userLogin } from '@/api/auth';
+import { watch } from '@/vendor/vuex-api-request';
 
 const INITIAL_STATE = {
   isLoggedIn: false,
@@ -11,7 +12,7 @@ export default {
   state: { ...INITIAL_STATE },
   mutations: {
     UPDATE(state, data) {
-      state = Object.assign({}, INITIAL_STATE, data);
+      state = Object.assign(state, data);
     },
     // eslint-disable-next-line
     CLEAR(state) {
@@ -27,15 +28,26 @@ export default {
       commit('CLEAR');
     },
 
-    login(context, { creds, redirect }) {
-      return userLogin(creds).then((res) => {
+    async login(context, { creds, redirect }) {
+      if (process.env.NODE_ENV === 'debug') {
+        const auth = {
+          isLoggedIn: true,
+          accessToken: 'access_token',
+        };
+
+        context.dispatch('update', auth);
+        if (redirect) router.push(redirect);
+        return 'User Is LoggedIn';
+      }
+
+      return watch(context, 'login')(userLogin(creds)).then((res) => {
         const auth = {
           isLoggedIn: true,
           accessToken: res.data.access_token,
         };
 
-        context.dispatch('auth/update', auth);
-        if (redirect) router.push({ name: redirect });
+        context.dispatch('update', auth);
+        if (redirect) router.push(redirect);
         return res;
       });
     },

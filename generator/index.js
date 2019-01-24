@@ -15,6 +15,7 @@ rimraf(path.join(base, 'src'));
 module.exports = (api, opts) => {
   api.extendPackage({
     scripts: {
+      debug: 'cross-env NODE_ENV=debug vue-cli-service serve',
       'json-server': 'json-server --watch db.json --port 3002',
     },
     dependencies: {
@@ -24,6 +25,7 @@ module.exports = (api, opts) => {
     },
     devDependencies: {
       'json-server': '^0.14.0',
+      'cross-env': '^5.2.0',
     },
   });
 

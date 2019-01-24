@@ -27,7 +27,7 @@ export default {
   },
   methods: {
     userLogin() {
-      this.$store.dispatch('auth/login', { creds: this.form });
+      this.$store.dispatch('auth/login', { creds: this.form, redirect: '/' });
     },
   },
 };
