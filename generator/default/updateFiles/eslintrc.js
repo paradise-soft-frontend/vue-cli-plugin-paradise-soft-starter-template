@@ -15,6 +15,7 @@ module.exports = (api, opts, files) => {
     lines[rulesIndex - 2] += `\n    'import/extensions': 'off',`;
     lines[rulesIndex - 2] += `\n    'no-param-reassign': 'off',`;
     lines[rulesIndex - 2] += `\n    'no-shadow': 'off',`;
+    lines[rulesIndex - 2] += `\n    'linebreak-style': 'off',`;
     files[file] = lines.reverse().join('\n');
   }
 };
