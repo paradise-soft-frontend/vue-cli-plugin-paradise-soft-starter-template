@@ -8,8 +8,9 @@
                  type="text" />
       <BaseInput v-model="form.password"
                  type="password" />
-      {{vuexApiRequest('login').error}}
-      <BaseButton type="submit">登入</BaseButton>
+      {{$api('login').error}}
+      <BaseButton :disabled="$api('login').pending"
+                  type="submit">登入</BaseButton>
     </form>
   </div>
 </template>
@@ -24,6 +25,14 @@ export default {
         password: '',
       },
     };
+  },
+  watch: {
+    form: {
+      handler() {
+        this.$api('login').clear();
+      },
+      deep: true,
+    },
   },
   methods: {
     userLogin() {
