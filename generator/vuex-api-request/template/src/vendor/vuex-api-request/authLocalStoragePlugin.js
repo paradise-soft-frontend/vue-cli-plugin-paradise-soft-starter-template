@@ -1,8 +1,9 @@
 import { LocalStoragePlugin } from 'vuex-api-request';
 import auth from '@/store/modules/auth';
+import { name as storageKey } from '@/../package.json';
 
 const authLocalStoragePlugin = LocalStoragePlugin({
-  storageKey: 'paradise-soft',
+  storageKey,
   vuexModule: ['auth', auth],
 });
 
