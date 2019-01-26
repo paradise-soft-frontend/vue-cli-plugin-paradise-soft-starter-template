@@ -1,3 +1,4 @@
+/* eslint-disable */
 const express = require('express');
 const proxy = require('http-proxy-middleware');
 require('dotenv').config();
