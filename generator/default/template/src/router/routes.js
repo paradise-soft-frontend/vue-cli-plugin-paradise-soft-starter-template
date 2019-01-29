@@ -23,9 +23,7 @@ const routes = pageModules.keys().map((filename) => {
 
   const component = pageModules(filename).default;
 
-  if (extendRoutes.map(({name}) => name).includes(name)) return 
-
-  console.log(component.meta)
+  if (extendRoutes.map(({name}) => name).includes(name)) return
 
   return {
     path,
