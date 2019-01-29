@@ -16,6 +16,12 @@
 <script>
 export default {
   name: 'Login',
+
+  meta: {
+    layout: 'Full',
+    isPublic: true,
+  },
+
   data() {
     return {
       form: {
@@ -24,6 +30,7 @@ export default {
       },
     };
   },
+
   methods: {
     userLogin() {
       this.$store.dispatch('auth/login', this.form);

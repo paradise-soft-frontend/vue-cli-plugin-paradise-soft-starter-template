@@ -1,33 +1,43 @@
-import Home from '../pages/Home';
-import Login from '../pages/Login';
-import NotFound from '../pages/NotFound';
-
-export default [
+/* eslint-disable */
+const extendRoutes = [
   {
-    path: '/',
-    name: 'home',
-    component: Home,
-    meta: {
-      isPublic: false,
-      layout: 'Default',
-    },
-  },
-  {
-    path: '/login',
-    name: 'login',
-    component: Login,
-    meta: {
-      isPublic: true,
-      layout: 'Full',
-    },
-  },
-  {
+    name: 'notfound',
     path: '*',
-    name: 'not-found',
-    component: NotFound,
-    meta: {
-      isPublic: true,
-      layout: 'Error',
-    },
+    component: require('@/pages/notfound').default,
   },
 ];
+
+const pageModules = require.context('@/pages', true, /\.vue/);
+const routes = pageModules.keys().map((filename) => {
+  const path = filename
+    .toLocaleLowerCase()
+    .replace(/\./, '')
+    .replace(/\.vue/, '')
+    .replace(/\/index/, '')
+    .replace(/_/g, ':');
+
+  const name = path
+    .replace(/:/g, '')
+    .replace(/^\//, '')
+    .replace(/\//g, '-');
+
+  const component = pageModules(filename).default;
+
+  if (extendRoutes.map(({name}) => name).includes(name)) return 
+
+  console.log(component.meta)
+
+  return {
+    path,
+    name,
+    component,
+    meta: {
+      layout: 'Default',
+      isPublic: true,
+      ...(component.meta ? component.meta : {}),
+    },
+    ...(component.route ? component.route : {}),
+  };
+}).filter(e => e);
+
+export default [...routes, ...extendRoutes.map((route) => ({...route, meta: route.component.meta}))];

@@ -1,18 +1,17 @@
 <template>
   <div class="home">
-    <HelloWorld msg="Welcome to Your Vue.js App" />
+    <p>I'm Home Page</p>
     <BaseButton @click="userLogout">Logout</BaseButton>
   </div>
 </template>
 
 <script>
-import HelloWorld from './HelloWorld.vue';
-
 export default {
   name: 'Home',
 
-  components: {
-    HelloWorld,
+  meta: {
+    layout: 'Default',
+    isPublic: false,
   },
 
   methods: {
