@@ -8,10 +8,10 @@
 
 <script>
 const layouts = {};
-const requireModules = require.context('./layouts', false, /\.vue/);
-requireModules.keys().forEach((filename) => {
+const layoutModules = require.context('@/layouts', false, /\.vue/);
+layoutModules.keys().forEach((filename) => {
   const layoutKeyName = filename.replace(/(\.\/|\.vue)/g, '');
-  layouts[layoutKeyName] = requireModules(filename).default;
+  layouts[layoutKeyName] = layoutModules(filename).default;
 });
 
 export default {
