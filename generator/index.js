@@ -2,6 +2,7 @@ const base = process.cwd();
 const path = require('path');
 const fs = require('fs');
 const rimraf = require('./../tools/rimraf');
+const default_UpdateMain = require('./default/updateFiles/main');
 const default_UpdateEslintrc = require('./default/updateFiles/eslintrc');
 const default_UpdateGitignore = require('./default/updateFiles/gitignore');
 const vuexApiRequest_UpdateMain = require('./vuex-api-request/updateFiles/main');
@@ -10,7 +11,10 @@ const devServerProxy_Utils_Request = require('./dev-server-proxy/updateFiles/uti
 const devServerProxy_Vendor_VuexApiRequest_Request = require('./dev-server-proxy/updateFiles/vendor-vuex-api-request-request');
 const devServerProxy_Api_Posts = require('./dev-server-proxy/updateFiles/api-posts');
 
-rimraf(path.join(base, 'src'));
+fs.unlinkSync(path.join(base, 'src', 'components', 'HelloWorld.vue'));
+rimraf(path.join(base, 'src', 'views'));
+fs.unlinkSync(path.join(base, 'src', 'router.js'));
+fs.unlinkSync(path.join(base, 'src', 'store.js'));
 
 module.exports = (api, opts) => {
   api.extendPackage({
@@ -53,6 +57,7 @@ module.exports = (api, opts) => {
   }
 
   api.postProcessFiles((files) => {
+    default_UpdateMain(api, opts, files);
     default_UpdateEslintrc(api, opts, files);
     default_UpdateGitignore(api, opts, files);
 
