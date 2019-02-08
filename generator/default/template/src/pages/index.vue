@@ -9,9 +9,11 @@
 export default {
   name: 'Home',
 
-  meta: {
-    layout: 'Default',
-    isPublic: false,
+  route: {
+    meta: {
+      layout: 'Default',
+      isPublic: false,
+    },
   },
 
   methods: {

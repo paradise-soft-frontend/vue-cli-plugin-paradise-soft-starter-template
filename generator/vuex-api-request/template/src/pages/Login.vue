@@ -18,6 +18,14 @@
 <script>
 export default {
   name: 'Login',
+
+  route: {
+    meta: {
+      layout: 'Full',
+      isPublic: true,
+    },
+  },
+
   data() {
     return {
       form: {
@@ -26,6 +34,7 @@ export default {
       },
     };
   },
+
   watch: {
     form: {
       handler() {
@@ -34,6 +43,7 @@ export default {
       deep: true,
     },
   },
+
   methods: {
     userLogin() {
       this.$store.dispatch('auth/login', this.form);

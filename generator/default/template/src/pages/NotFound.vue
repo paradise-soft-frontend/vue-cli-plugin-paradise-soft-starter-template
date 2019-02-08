@@ -8,9 +8,11 @@
 export default {
   name: 'NotFound',
 
-  meta: {
-    layout: 'Error',
-    isPublic: true,
+  route: {
+    meta: {
+      layout: 'Error',
+      isPublic: true,
+    },
   },
 };
 </script>

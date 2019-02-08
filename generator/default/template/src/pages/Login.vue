@@ -17,9 +17,11 @@
 export default {
   name: 'Login',
 
-  meta: {
-    layout: 'Full',
-    isPublic: true,
+  route: {
+    meta: {
+      layout: 'Full',
+      isPublic: true,
+    },
   },
 
   data() {
