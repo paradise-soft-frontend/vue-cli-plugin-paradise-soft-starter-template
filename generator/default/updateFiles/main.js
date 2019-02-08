@@ -17,9 +17,8 @@ module.exports = (api, opts, files) => {
     lines[lastImportIndex] += `\n  Vue.component(registerName, componentModules(filename).default);`;
     lines[lastImportIndex] += `\n});`;
 
-    const renderFuncIndex = lines.findIndex((line) => line.match(/h => h\(App\)/));
-    lines[renderFuncIndex] = `  render: (h) => h(App),`;
-
     files[file] = lines.reverse().join('\n');
+
+    files[file] = files[file].replace(/h => h\(App\)/, '(h) => h(App)');
   }
 };
