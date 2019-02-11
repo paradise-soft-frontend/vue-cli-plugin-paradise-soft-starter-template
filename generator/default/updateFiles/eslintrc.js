@@ -10,7 +10,6 @@ module.exports = (api, opts, files) => {
     lines[rulesIndex - 2] += `\n    'object-curly-spacing': ['error', 'always'],`;
     lines[rulesIndex - 2] += `\n    quotes: ['error', 'single'],`;
     lines[rulesIndex - 2] += `\n    'comma-dangle': ["error", "only-multiline"],`;
-    lines[rulesIndex - 2] += `\n    code: 120,`;
     lines[rulesIndex - 2] += `\n    'arrow-parens': ['error', 'always'],`;
     lines[rulesIndex - 2] += `\n    'import/extensions': 'off',`;
     lines[rulesIndex - 2] += `\n    'no-param-reassign': 'off',`;
