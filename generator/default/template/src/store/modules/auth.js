@@ -1,6 +1,5 @@
 import router from '@/router';
 import { userLogin } from '@/api/auth';
-import { watch } from '@/vendor/vuex-api-request';
 
 const INITIAL_STATE = {
   isLoggedIn: false,
