@@ -1,5 +1,6 @@
 import router from '@/router';
 import { userLogin } from '@/api/auth';
+import { watch } from '@/vendor/vuex-api-request';
 
 const INITIAL_STATE = {
   isLoggedIn: false,
@@ -39,7 +40,7 @@ export default {
         return 'User Is LoggedIn';
       }
 
-      const request = userLogin(creds);
+      const request = watch(context, 'login')(userLogin(creds));
 
       return request.then((res) => {
         const auth = {
