@@ -1,5 +1,5 @@
 import { fetchPosts, fetchPost, createPost } from '@/api/posts';
-import { watch } from '@/vendor/vuex-api-request';
+import watch from '@/vendor/vuex-api-request/watch';
 
 const INITIAL_STATE = {
   posts: [],

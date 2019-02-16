@@ -8,13 +8,15 @@ const default_UpdateGitignore = require('./default/updateFiles/gitignore');
 const vuexApiRequest_UpdateMain = require('./vuex-api-request/updateFiles/main');
 const vuexApiRequest_UpdateStore = require('./vuex-api-request/updateFiles/store');
 const devServerProxy_Utils_Request = require('./dev-server-proxy/updateFiles/utils-request');
-const devServerProxy_Vendor_VuexApiRequest_Request = require('./dev-server-proxy/updateFiles/vendor-vuex-api-request-request');
+const devServerProxy_Vendor_Request = require('./dev-server-proxy/updateFiles/vendor-request');
 const devServerProxy_Api_Posts = require('./dev-server-proxy/updateFiles/api-posts');
 
-fs.unlinkSync(path.join(base, 'src', 'components', 'HelloWorld.vue'));
-rimraf(path.join(base, 'src', 'views'));
-fs.unlinkSync(path.join(base, 'src', 'router.js'));
-fs.unlinkSync(path.join(base, 'src', 'store.js'));
+try {
+  fs.unlinkSync(path.join(base, 'src', 'components', 'HelloWorld.vue'));
+  rimraf(path.join(base, 'src', 'views'));
+  fs.unlinkSync(path.join(base, 'src', 'router.js'));
+  fs.unlinkSync(path.join(base, 'src', 'store.js'));
+} catch (error) {}
 
 module.exports = (api, opts) => {
   api.extendPackage({
@@ -38,7 +40,7 @@ module.exports = (api, opts) => {
   if (opts.vuexApiRequest) {
     api.extendPackage({
       dependencies: {
-        'vuex-api-request': '^2.7.0',
+        'vuex-api-request': '^2.11.0',
       },
     });
 
@@ -71,7 +73,7 @@ module.exports = (api, opts) => {
     }
 
     if (opts.vuexApiRequest && opts.proxy) {
-      devServerProxy_Vendor_VuexApiRequest_Request(api, opts, files);
+      devServerProxy_Vendor_Request(api, opts, files);
       devServerProxy_Api_Posts(api, opts, files);
     }
   });

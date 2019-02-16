@@ -1,6 +1,7 @@
-import VuexApiRequest from 'vuex-api-request';
 
-const watch = VuexApiRequest.createWatch({
+import createWatch from 'vuex-api-request/lib/createWatch';
+
+const watch = createWatch({
   vuexApiModuleName: 'api',
   response: (res) => res,
   error: (err) => err && err.response && err.response.data,
@@ -9,6 +10,4 @@ const watch = VuexApiRequest.createWatch({
   },
 });
 
-export { watch };
-
-export default VuexApiRequest;
+export default watch;

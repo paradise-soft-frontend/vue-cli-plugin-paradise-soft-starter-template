@@ -5,13 +5,14 @@ module.exports = (api, opts, files) => {
   if (main) {
     // inject import for registerServiceWorker script into main.js
     const lines = main.split(/\r?\n/g).reverse();
-    const lastImportJsIndex = lines.findIndex((line) => line.match(/from/));
+    const importVueIndex = lines.findIndex((line) => line.match(/^import Vue/));
+    lines[importVueIndex] += `\nimport VuexApiRequest from 'vuex-api-request';`;
 
-    lines[lastImportJsIndex] += `\nimport VuexApiRequest from './vendor/vuex-api-request';`;
-    lines[lastImportJsIndex] += `\nimport './vendor/vuex-api-request/request';`;
+    const lastImportJsIndex = lines.findIndex((line) => line.match(/from/));
+    lines[lastImportJsIndex] += `\nimport './vendor/request';`;
 
     const lastImportIndex = lines.findIndex((line) => line.match(/^import/));
-    lines[lastImportIndex] += `\n\nVue.use(VuexApiRequest(store));`;
+    lines[lastImportIndex] += `\n\nVue.use(VuexApiRequest());`;
 
     files[file] = lines.reverse().join('\n');
   }

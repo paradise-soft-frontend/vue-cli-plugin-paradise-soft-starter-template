@@ -6,7 +6,7 @@ module.exports = (api, opts, files) => {
     const lines = main.split(/\r?\n/g).reverse();
     const lastImportIndex = lines.findIndex((line) => line.match(/^import/));
 
-    lines[lastImportIndex] += `\nimport '@/styles/main.scss';`;
+    lines[lastImportIndex] += `\nimport './styles/main.scss';`;
     lines[lastImportIndex] += `\n`;
     lines[lastImportIndex] += `\nconst componentModules = require.context('@/components', true, /\\.vue/);`;
     lines[lastImportIndex] += `\ncomponentModules.keys().forEach((filename) => {`;

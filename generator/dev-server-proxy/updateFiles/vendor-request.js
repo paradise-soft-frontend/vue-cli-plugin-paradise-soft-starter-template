@@ -1,5 +1,5 @@
 module.exports = (api, opts, files) => {
-  const file = 'src/vendor/vuex-api-request/request.js';
+  const file = 'src/vendor/request.js';
   const request = files[file];
 
   if (request) {
