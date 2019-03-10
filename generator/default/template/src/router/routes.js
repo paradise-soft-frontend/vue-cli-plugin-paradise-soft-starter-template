@@ -10,6 +10,7 @@ const extendRoutes = [
 const pageModules = require.context('@/pages', true, /\.vue/);
 const routes = pageModules
   .keys()
+  .sort((a, b) => a.indexOf('_') - b.indexOf('_'))
   .map((filename) => {
     const path = filename
       .toLocaleLowerCase()
