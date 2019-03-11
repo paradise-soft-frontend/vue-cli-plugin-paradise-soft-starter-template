@@ -47,9 +47,11 @@ const routes = pageModules
       path,
       name,
       component,
-      ...(component.route ? component.route : {}),
     });
   })
   .filter(Boolean);
 
-export default [...routes, ...extendRoutes.map((route) => createCustomRoute(route))];
+export default [
+  ...routes,
+  ...extendRoutes.map((route) => createCustomRoute(route)),
+];
