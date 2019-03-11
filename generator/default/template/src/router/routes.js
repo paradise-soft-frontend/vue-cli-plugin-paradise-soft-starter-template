@@ -7,7 +7,22 @@ const extendRoutes = [
   },
 ];
 
+const createCustomRoute = (route) => {
+  const pageRouteConfig = route.component.route || {};
+
+  return {
+    ...route,
+    ...pageRouteConfig,
+    meta: {
+      layout: 'Default',
+      isPublic: true,
+      ...(pageRouteConfig.meta ? pageRouteConfig.meta : {}),
+    },
+  };
+};
+
 const pageModules = require.context('@/pages', true, /\.vue/);
+
 const routes = pageModules
   .keys()
   .sort((a, b) => a.indexOf('_') - b.indexOf('_'))
@@ -28,21 +43,13 @@ const routes = pageModules
 
     if (extendRoutes.map(({ name }) => name).includes(name)) return;
 
-    return {
+    return createCustomRoute({
       path,
       name,
       component,
       ...(component.route ? component.route : {}),
-      meta: {
-        layout: 'Default',
-        isPublic: true,
-        ...(component.route && component.route.meta ? component.route.meta : {}),
-      },
-    };
+    });
   })
   .filter(Boolean);
 
-export default [
-  ...routes,
-  ...extendRoutes.map((route) => ({ ...route, meta: route.component.meta })),
-];
+export default [...routes, ...extendRoutes.map((route) => createCustomRoute(route))];
