@@ -62,12 +62,7 @@ $ vue add paradise-soft-starter-template
 * [src/api](./generator/default/template/src/api/README.md)
 * [src/components](./generator/default/template/src/components/README.md)
 * [src/filters](./generator/default/template/src/filters/README.md)
-* [src/pages](./generator/default/template/src/pages/README.md)
 * [src/router](./generator/default/template/src/router/README.md)
-* [src/store](./generator/default/template/src/store/README.md)
-* [src/styles](./generator/default/template/src/styles/README.md)
-* [src/utils](./generator/default/template/src/utils/README.md)
-* [src/vendor](./generator/default/template/src/vendor/README.md)
 
 ## 程式碼規範檢查
 
