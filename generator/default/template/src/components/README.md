@@ -1,18 +1,22 @@
 # Components
 
-### 架構
+管理組件的文件夾
+
+## 資料夾結構範例
 
 ```
 ├── /components/
-│   ├── /article/       # 多頁面共享組件
-│       ├── /ArticleList.vue
-│   ├── /ui/            # UI 組件
-│   ├── /layout/        # 關於 layout 的組件
-│   └── /common/        # 未分類組件
-├── /pages/
-│   ├── /Home/
-│       ├── /index.vue
-│       ├── /HomeComponent.vue
-│   ├── /User.vue
+│   ├── /common/                # 未分類組件
+│       └── /AvatarImage.vue
+│   ├── /ui/                    # UI 組件
+│       ├── /BaseButton.vue
+│       └── /BaseInput.vue
+│   ├── /layout/                # 關於 layout 的組件
+│       ├── /DefaultLayoutHeader.vue
+│       └── /DefaultLayoutFooter.vue
+│   └── /pages/                 # 關於 pages 的組件
+│       └── /article/               
+│           ├── /ArticleList.vue
+│           └── /ArticleListItem.vue
 ├── ...
 ```
