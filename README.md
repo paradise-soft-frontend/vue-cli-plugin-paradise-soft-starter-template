@@ -57,6 +57,10 @@ $ vue add paradise-soft-starter-template
 └── yarn.lock                   # 鎖定第三方套件依賴包版本
 ```
 
+## 專案架構說明
+
+* [src/api](./generator/default/template/src/api/README.md)
+
 ## 快速開始
 
 1. 建立 .env 設定檔， 詳細請參考 [Vue CLI 环境变量和模式](https://cli.vuejs.org/zh/guide/mode-and-env.html)
