@@ -11,7 +11,7 @@
 $ npm install -g @vue/cli
 ```
 
-2. 建立專案
+2. 建立專案（Router, Vuex, Sass, Linter）
 
 ```bash
 $ vue create my-project
@@ -60,6 +60,47 @@ $ vue add paradise-soft-starter-template
 ## 專案架構說明
 
 * [src/api](./generator/default/template/src/api/README.md)
+* [src/components](./generator/default/template/src/components/README.md)
+* [src/filters](./generator/default/template/src/filters/README.md)
+* [src/pages](./generator/default/template/src/pages/README.md)
+* [src/router](./generator/default/template/src/router/README.md)
+* [src/store](./generator/default/template/src/store/README.md)
+* [src/styles](./generator/default/template/src/styles/README.md)
+* [src/utils](./generator/default/template/src/utils/README.md)
+* [src/vendor](./generator/default/template/src/vendor/README.md)
+
+## 程式碼規範檢查
+
+使用 VUE CLI 3 建立專案時，Linter / Formatter 的設定選擇 ESLint + Airbnb config，然後編輯 .eslintrc.js
+
+```
+module.exports = {
+  root: true,
+  env: {
+    node: true,
+  },
+  extends: [
+    'plugin:vue/essential',
+    '@vue/airbnb',
+  ],
+  rules: {
+    'no-console': process.env.NODE_ENV === 'production' ? 'error' : 'off',
+    'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
+    semi: ['error', 'always'],
+    'object-curly-spacing': ['error', 'always'],
+    quotes: ['error', 'single'],
+    'comma-dangle': ["error", "only-multiline"],
+    'arrow-parens': ['error', 'always'],
+    'import/extensions': 'off',
+    'no-param-reassign': 'off',
+    'no-shadow': 'off',
+    'linebreak-style': 'off',
+  },
+  parserOptions: {
+    parser: 'babel-eslint',
+  },
+};
+```
 
 ## 快速開始
 
