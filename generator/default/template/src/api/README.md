@@ -18,9 +18,9 @@ VUE_APP_API_URL=http://api.vue-starter.com
 import request from '@/utils/request'
 
 export function getPosts({page, per_page}) {
-	return request.get('/posts', {
-	  params: {page, per_page}
-	})
+  return request.get('/posts', {
+    params: {page, per_page}
+  })
 }
 
 export function updatePost(id, {title, author}) {
