@@ -56,3 +56,38 @@ $ vue add paradise-soft-starter-template
 ├── vue.config.js               # Vue CLI 3 的設定檔
 └── yarn.lock                   # 鎖定第三方套件依賴包版本
 ```
+
+## 快速開始
+
+1. 建立 .env 設定檔， 詳細請參考 [Vue CLI 环境变量和模式](https://cli.vuejs.org/zh/guide/mode-and-env.html)
+
+```
+VUE_APP_API_URL=http://localhost:3002
+```
+
+2. 安裝依賴套件
+
+```bash
+$ npm install
+```
+
+3. 啟動專案（開發模式）
+
+```bash
+$ npm run serve
+```
+
+4. 建立專案
+
+```bash
+$ npm run build
+```
+
+5. 啟動服務
+
+```bash
+$ npm run start
+```
+
+
+
