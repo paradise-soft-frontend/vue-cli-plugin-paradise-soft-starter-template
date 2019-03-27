@@ -6,8 +6,14 @@
 </template>
 
 <script>
+import BaseButton from '@/components/ui/BaseButton';
+
 export default {
   name: 'Home',
+
+  components: {
+    BaseButton,
+  },
 
   route: {
     meta: {

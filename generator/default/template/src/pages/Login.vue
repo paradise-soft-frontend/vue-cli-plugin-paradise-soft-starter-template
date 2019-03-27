@@ -14,8 +14,16 @@
 </template>
 
 <script>
+import BaseInput from '@/components/ui/BaseInput';
+import BaseButton from '@/components/ui/BaseButton';
+
 export default {
   name: 'Login',
+
+  components: {
+    BaseInput,
+    BaseButton,
+  },
 
   route: {
     meta: {
